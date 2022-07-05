@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home-page',
@@ -7,13 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  myForm = this.fb.group({
+    "search": [, Validators.required]
+  });
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
 
   search() {
-    console.log('search');
+    if(!this.myForm.valid) {
+      this.myForm.markAllAsTouched();
+      return;
+    }
+    // Send to page of search results
+
   }
 
 }

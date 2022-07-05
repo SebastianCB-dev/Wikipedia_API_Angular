@@ -8,12 +8,18 @@
   </article>
   <!-- Description Project -->
   <article id="description-project">
-    <p>This is a free project about the implementation with the API's Wikipedia. On another hand, this project was built with Angular 14, Bootstrap and a lot of patience. This project was built only with the intention to practice with API's so this is not a commercial product. If you want to contribute with this project, follow <a href="https://github.com/SebastianCB-dev/Wikipedia_API_Angular" referrerpolicy="no-referrer" target="_blank">this next link.</a></p>
+    <p>This is a free project about the implementation with the API's Wikipedia. On the other hand, this project was built with Angular 14, Bootstrap and a lot of patience. This project was built only with the intention to practice with API's so this is not a commercial product. If you want to contribute with this project, follow <a href="https://github.com/SebastianCB-dev/Wikipedia_API_Angular" referrerpolicy="no-referrer" target="_blank">this next link.</a></p>
   </article>
   <!-- Search -->
-  <form (ngSubmit)="search()">
-    <input type="text" placeholder="Search anything..." class="form-control">
-    <button type="button" class="btn btn-primary my-3">Search <i class="fa-solid fa-magnifying-glass"></i></button>
+  <form (ngSubmit)="search()" [formGroup]="myForm">
+    <input type="text"
+           placeholder="Search anything..."
+           class="form-control"
+           formControlName="search">
+    <span *ngIf="!myForm.controls['search'].valid && myForm.controls['search'].touched">
+      Fill the form correctly!
+    </span>
+    <button type="submit" class="btn btn-primary my-3">Search <i class="fa-solid fa-magnifying-glass"></i></button>
   </form>
 </section>
 
