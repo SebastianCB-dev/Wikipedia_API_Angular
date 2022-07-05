@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -11,7 +12,8 @@ export class HomePageComponent implements OnInit {
   myForm = this.fb.group({
     "search": [, Validators.required]
   });
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private rt: Router) { }
 
   ngOnInit(): void {
   }
@@ -21,8 +23,9 @@ export class HomePageComponent implements OnInit {
       this.myForm.markAllAsTouched();
       return;
     }
+    // Transform form data to string without spaces
     // Send to page of search results
-
+    this.rt.navigateByUrl('/results/' + this.myForm.value.search);
   }
 
 }
