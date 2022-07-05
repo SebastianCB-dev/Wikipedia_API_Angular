@@ -1,16 +1,44 @@
 #home-content {
   margin: 0px auto;
   width: 80%;
-  img {
-    display: block;
+  #home-title {
+    width: 400px;
     margin: 0px auto;
-    width: 200px;
+    padding-top: 60px;
+    img {
+      display: block;
+      margin: 0px auto;
+      width: 200px;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    h1 {
+      font-size: 70px;
+      font-family: 'FiraSans-Bold';
+    }
+    h2 {
+      color: #ccc;
+      font-family: 'FiraSans-SemiBold';
+    }
   }
-  h1, h2 {
+
+  #description-project {
+    margin-top: 30px;
+    font-family: 'SF Mono Regular';
     text-align: center;
+    font-size: 18px;
   }
-  h2 {
-    color: #ccc;
+  form {
+    margin-top: 60px;
+    input {
+      height: 50px;
+      font-family: 'FiraSans-Regular';
+    }
+    button {
+      display: block;
+      margin: 0px auto;
+    }
   }
 
 }

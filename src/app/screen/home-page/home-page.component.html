@@ -1,11 +1,19 @@
 
 <section id="home-content">
+  <!-- Title -->
   <article id="home-title">
     <img src="../../../assets/imgs/wikipedia_logo.png">
     <h1>Wikipedia</h1>
     <h2>The Free Encyclopedia</h2>
   </article>
-  <form>
-
+  <!-- Description Project -->
+  <article id="description-project">
+    <p>This is a free project about the implementation with the API's Wikipedia. On another hand, this project was built with Angular 14, Bootstrap and a lot of patience. This project was built only with the intention to practice with API's so this is not a commercial product. If you want to contribute with this project, follow <a href="https://github.com/SebastianCB-dev/Wikipedia_API_Angular" referrerpolicy="no-referrer" target="_blank">this next link.</a></p>
+  </article>
+  <!-- Search -->
+  <form (ngSubmit)="search()">
+    <input type="text" placeholder="Search anything..." class="form-control">
+    <button type="button" class="btn btn-primary my-3">Search</button>
   </form>
 </section>
+
