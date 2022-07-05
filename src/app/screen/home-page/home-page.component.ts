@@ -19,7 +19,7 @@ export class HomePageComponent implements OnInit {
   }
 
   search() {
-    if(!this.myForm.valid) {
+    if (!this.myForm.valid) {
       this.myForm.markAllAsTouched();
       return;
     }
