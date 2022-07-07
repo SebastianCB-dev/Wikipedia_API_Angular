@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormsModule, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -24,8 +24,9 @@ export class HomePageComponent implements OnInit {
       return;
     }
     // Transform form data to string without spaces
+    const text_transform = (this.myForm.controls["search"].value! as string).replace(/\s/g, '%20');
     // Send to page of search results
-    this.rt.navigateByUrl('/results/' + this.myForm.value.search);
+    this.rt.navigateByUrl('/results/' + text_transform);
   }
 
 }
