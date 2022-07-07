@@ -1,1 +1,30 @@
-<p>results works!</p>
+<section id="content-results">
+  <article id="menu">
+
+    <div class="title"
+         routerLink="/">
+      <img src="../../../assets/imgs/wikipedia_logo.png" alt="Wikipedia Logo">
+      <h3>WikiAPI</h3>
+    </div>
+
+    <form>
+      <input type="text" 
+             [value]="_search"
+             class="form-control">
+      <button class="btn btn-primary">Search <i class="fa fa-search"></i></button>
+    </form>
+  </article>
+  <article id="results">
+    <div class="info">
+      <!-- TODO: Change dinamically -->
+      <p>There is 2 results</p>
+    </div>
+    <hr>
+
+  </article>
+</section>
+
+<!-- TODO: Habilitar de manera dinamica -->
+<div class="loading">
+  <i class="fa fa-spinner fa-spin"></i>
+</div>

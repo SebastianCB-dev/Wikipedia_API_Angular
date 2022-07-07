@@ -26,6 +26,6 @@ export class ResultsComponent implements OnInit {
   }
 
   startSearch() {
-    
+    console.log(this._search);
   }
 }
