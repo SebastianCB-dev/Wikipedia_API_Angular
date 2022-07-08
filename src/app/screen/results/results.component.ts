@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { WikiService } from 'src/app/services/wiki.service';
+
+import { Page } from '../../models/types';
+
 
 @Component({
   selector: 'app-results',
@@ -9,9 +13,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ResultsComponent implements OnInit {
 
   _search: string = '';
+  results: Page[] = [];
+  isCharging: boolean = false;
 
   constructor(private ar: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private ws: WikiService) { }
 
   ngOnInit(): void {
     // Get Params
@@ -24,8 +31,14 @@ export class ResultsComponent implements OnInit {
       this.startSearch();
     });
   }
-
+  
   startSearch() {
-    console.log(this._search);
+    this.isCharging = true;
+    const data = this.ws.getData(this._search);
+    data.subscribe( res => {
+      this.results = res.pages;
+      this.isCharging = false;
+    });  
+    
   }
 }
