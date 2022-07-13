@@ -1,16 +1,13 @@
 <section id="content-results">
   <article id="menu">
 
-    <div class="title"
-         routerLink="/">
+    <div class="title" routerLink="/">
       <img src="../../../assets/imgs/wikipedia_logo.png" alt="Wikipedia Logo">
       <h3>WikiAPI</h3>
     </div>
 
     <form>
-      <input type="text" 
-             [value]="_search"
-             class="form-control">
+      <input type="text" [value]="_search" class="form-control">
       <button class="btn btn-primary">Search <i class="fa fa-search"></i></button>
     </form>
   </article>
@@ -20,12 +17,28 @@
       <p>There is {{ results.length }} results</p>
     </div>
     <hr>
-
+    <div class="container-results">
+      <div class="results">
+        <div *ngFor="let result of results">
+          <div class="result">
+            <h3 class="title">{{ result.title }}</h3>
+            <h3 [innerHTML]="result.excerpt" class="description"></h3>
+          </div>
+        </div>
+      </div>
+      <div class="preview"
+           *ngIf="resultPreview">
+        <img [src]="getUrl()">
+        <h3>{{ resultPreview.title }}</h3>
+        <h4>WikiAPI</h4>
+        <hr>
+        <p [innerHTML]="resultPreview.excerpt"></p>
+      </div>
+    </div>
   </article>
 </section>
 
 <!-- TODO: Habilitar de manera dinamica -->
-<div class="loading"
-     *ngIf="isCharging">
+<div class="loading" *ngIf="isCharging">
   <i class="fa fa-spinner fa-spin"></i>
 </div>

@@ -16,6 +16,10 @@ export class ResultsComponent implements OnInit {
   results: Page[] = [];
   isCharging: boolean = false;
 
+  resultPreview!: Page;
+  
+  imageError: string = 'https://mived.gob.do/wp-content/themes/consultix/images/no-image-found-360x260.png';
+
   constructor(private ar: ActivatedRoute,
               private router: Router,
               private ws: WikiService) { }
@@ -31,14 +35,24 @@ export class ResultsComponent implements OnInit {
       this.startSearch();
     });
   }
-  
+
   startSearch() {
     this.isCharging = true;
     const data = this.ws.getData(this._search);
     data.subscribe( res => {
       this.results = res.pages;
       this.isCharging = false;
-    });  
-    
+      this.resultPreview = this.results[0];
+    });
   }
+
+  getUrl(): string {
+    let image = this.imageError;
+    if(this.resultPreview?.thumbnail?.url) {
+      const url = this.resultPreview.thumbnail.url.replace('//', '');
+      image = 'https://' + url;
+    }
+    return image;
+  }
+
 }

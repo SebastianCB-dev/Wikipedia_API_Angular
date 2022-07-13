@@ -56,6 +56,66 @@
       font-family: 'FiraSans-SemiBold';
       font-size: 25px;
     }
+    .container-results {
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: space-evenly;
+      .results {
+        height: auto;
+        padding: 25px;
+        width: 45%;
+        .result {
+          min-height: 110px;
+          margin-bottom: 10px;
+          max-height: 200px;
+          .title {
+            color: #8AB4E4;
+            cursor: pointer;
+            font-size: 19px;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+          .description {
+            color: #ccc;
+            font-size: 16px;
+            text-align: justify;
+          }
+        }
+      }
+      .preview {
+        margin-top: 50px;
+        width: 350px;
+        height: min-content;
+        padding-bottom: 20px;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        overflow: hidden;
+        position: sticky;
+        top: 30px;
+        img {
+          display: block;
+          width: 100%;
+          margin: 0px auto;
+          height: 180px;
+        }
+        h3 {
+          margin-top: 10px;
+          margin-left: 10px;
+        }
+        h4 {
+          margin-left: 10px;
+          font-size: 16px;
+          color: #ccc;
+        }
+        p {
+          margin-left: 10px;
+          margin-right: 10px;
+        }
+      }
+    }
+
   }
 }
 

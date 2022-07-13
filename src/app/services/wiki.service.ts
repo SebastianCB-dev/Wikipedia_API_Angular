@@ -8,12 +8,13 @@ import { WikiDoc } from '../models/types';
 })
 export class WikiService {
 
-  private _urlBase: string = 'https://en.wikipedia.org/w/rest.php/v1/search/page?q=earth&limit=10'
+  private _urlBase: string = 'https://en.wikipedia.org/w/rest.php/v1/search/page?q='
 
   constructor(private hc: HttpClient) { }
 
    getData(search: string): Observable<WikiDoc> {
-    const data = this.hc.get(this._urlBase);
+    const urlAPI = this._urlBase + search + '&limit=10';
+    const data = this.hc.get(urlAPI);
     return data as Observable<WikiDoc>;
   }
 }
