@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SpellingService } from 'src/app/services/spelling.service';
 import { WikiService } from 'src/app/services/wiki.service';
 
 import { Page } from '../../models/types';
@@ -15,14 +16,16 @@ export class ResultsComponent implements OnInit {
   _search: string = '';
   results: Page[] = [];
   isCharging: boolean = false;
-
+  suggestion = '';
   resultPreview!: Page;
   
   imageError: string = 'https://mived.gob.do/wp-content/themes/consultix/images/no-image-found-360x260.png';
 
+
   constructor(private ar: ActivatedRoute,
               private router: Router,
-              private ws: WikiService) { }
+              private ws: WikiService,
+              private ss: SpellingService) { }
 
   ngOnInit(): void {
     // Get Params
@@ -31,19 +34,30 @@ export class ResultsComponent implements OnInit {
         this.router.navigateByUrl('/');
         return;
       }
-      this._search =  params["id"];
+      this._search = params["id"];
       this.startSearch();
     });
   }
 
-  startSearch() {
+  async startSearch() {
     this.isCharging = true;
     const data = this.ws.getData(this._search);
     data.subscribe( res => {
       this.results = res.pages;
-      this.isCharging = false;
+      
       this.resultPreview = this.results[0];
     });
+    if(this.results.length == 0) {
+      console.log('Hello World');
+      console.log(this._search);
+      await this.ss.getSuggestion(this._search).then((data) => {
+        for (const error of data.response.errors) {
+            this.suggestion = `${error.bad, error.better.join(', ')}`;
+        }
+       })
+       .catch((err) => {});
+    }
+    this.isCharging = false;
   }
 
   getUrl(): string {

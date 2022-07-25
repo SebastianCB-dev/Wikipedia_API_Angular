@@ -13,7 +13,7 @@
   </article>
   <article id="results">
     <div class="info">
-      <!-- TODO: Change dinamically -->
+      <!-- TODO: Change dinamically with a Pipe-->
       <p>There is {{ results.length }} results</p>
     </div>
     <hr>
@@ -35,6 +35,16 @@
         <p [innerHTML]="resultPreview.excerpt"></p>
       </div>
     </div>
+    <div class="suggestions"
+         *ngIf="!isCharging && results.length == 0">
+      Maybe you wanted to say: {{ suggestion }}
+    </div>
+    <div *ngIf="!isCharging && results.length == 0"
+         class="no-results">
+      <h3>Ooops, there are no results! 🤯</h3>
+      <img src="../../../assets/imgs/empty.svg">
+    </div>
+    
   </article>
 </section>
 
