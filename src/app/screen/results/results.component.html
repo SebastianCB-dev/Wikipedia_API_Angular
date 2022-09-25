@@ -21,7 +21,8 @@
       <div class="results">
         <div *ngFor="let result of results">
           <div class="result">
-            <h3 class="title">{{ result.title }}</h3>
+            <h3 class="title"
+                (click)="changePreview(result)">{{ result.title }}</h3>
             <h3 [innerHTML]="result.excerpt" class="description"></h3>
           </div>
         </div>

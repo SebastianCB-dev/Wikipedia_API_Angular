@@ -69,4 +69,12 @@ export class ResultsComponent implements OnInit {
     return image;
   }
 
+  changePreview(page: Page) {
+    if(page === this.resultPreview) {
+      return;
+    }
+    this.resultPreview = page;
+  }
+
+
 }
